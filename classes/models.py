@@ -85,7 +85,7 @@ class Grade(SoftDeleteModel):
 class Class(SoftDeleteModel):
     grade = models.ForeignKey(Grade, on_delete=models.CASCADE)
     section = models.ForeignKey(Section, on_delete=models.CASCADE)
-    # teachers = models.ManyToManyField("Teacher")
+    teachers = models.ManyToManyField("teachers.Teacher")
 
     class Meta:
         unique_together = (

@@ -6,7 +6,8 @@ from .models import Class, Grade, Section
 
 @admin.register(Class)
 class ClassAdmin(admin.ModelAdmin):
-    fields = ("grade", "section")
+    fields = ("grade", "section", "teachers")
+    filter_horizontal = ("teachers",)
     list_display = ("grade", "section")
     list_filter = ("grade", "section")
     search_fields = ("grade", "section")

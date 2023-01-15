@@ -34,3 +34,6 @@ class Student(SoftDeleteModel):
     active_class = models.ForeignKey(
         "classes.Class", on_delete=models.CASCADE, null=True, blank=True
     )
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
