@@ -1,25 +1,10 @@
 from django.db import models
+from school.utils import SoftDeleteModel
 import datetime
 
 
 YEAR_CHOICES = [(r, r) for r in range(1984, datetime.date.today().year + 1)]
 CURRENT_YEAR = datetime.date.today().year
-
-
-class SoftDeleteModel(models.Model):
-
-    is_deleted = models.BooleanField(default=False)
-
-    def soft_delete(self):
-        self.is_deleted = True
-        self.save()
-
-    def restore(self):
-        self.is_deleted = False
-        self.save()
-
-    class Meta:
-        abstract = True
 
 
 class TeacherAcademicYear(SoftDeleteModel):
